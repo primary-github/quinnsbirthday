@@ -5,19 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quinn's Quick Quiz</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to right, #ff9966, #ff5e62);
+            font-family: 'Arial', sans-serif;
+            background-color: #ff9966; /* darker tangerine */
             color: #333;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
         }
 
         .container {
@@ -25,50 +22,50 @@
             width: 100%;
             text-align: center;
             background-color: #fff;
-            padding: 30px;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             animation: fadeIn 1s ease-in-out;
         }
 
-        h1, h2 {
-            color: #cc0099;
-            margin-bottom: 20px;
+        .chapter {
+            display: none;
+            animation: slideIn 0.5s ease-in-out;
         }
 
-        p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
-        }
-
-        input[type="text"] {
-            padding: 12px;
-            border: 2px solid #cc0099;
-            border-radius: 5px;
-            width: calc(100% - 24px);
-            margin-bottom: 20px;
-            font-size: 1em;
+        .visible {
+            display: block;
         }
 
         button {
             padding: 12px 20px;
-            background-color: #008080;
+            background-color: #008080; /* teal */
             border: none;
             color: #fff;
             cursor: pointer;
             border-radius: 5px;
             margin-top: 20px;
             transition: background-color 0.3s ease;
-            font-size: 1em;
         }
 
         button:hover {
-            background-color: #006666;
+            background-color: #006666; /* darker teal */
+        }
+
+        h1, h2 {
+            color: #cc0099; /* darker magenta */
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 2px solid #cc0099; /* darker magenta */
+            margin-bottom: 10px;
+            border-radius: 5px;
+            width: calc(100% - 24px);
         }
 
         .feedback, .error {
             margin-top: 10px;
-            font-size: 1em;
             display: none;
         }
 
@@ -81,17 +78,17 @@
         }
 
         .present {
-            background-color: #008080;
+            background-color: #008080; /* teal */
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             margin-top: 20px;
             color: #fff;
             animation: popIn 0.5s ease-in-out;
         }
 
         .present h2 {
-            color: #ffcc00;
+            color: #ffcc00; /* gold */
         }
 
         .present p, .present strong {
@@ -101,12 +98,17 @@
 
         .present strong {
             margin-top: 20px;
-            color: #ffcc00;
+            color: #ffcc00; /* gold */
         }
 
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
         @keyframes popIn {
@@ -118,7 +120,7 @@
 
 <body>
 
-    <div class="container animate__animated animate__fadeIn">
+    <div class="container">
         <h1>Quinn's Quick Quiz</h1>
         <div id="introduction" class="chapter visible">
             <p>Welcome, Quinn! Today is a special day because it's your 21st birthday! Your friend Sam has set up an adventure filled with trivia and puzzles to celebrate. Are you ready to begin this exciting journey and claim your birthday present?</p>
@@ -198,12 +200,8 @@
 
     <script>
         function showChapter(chapterId) {
-            document.querySelectorAll('.chapter').forEach(chapter => {
-                chapter.classList.remove('visible');
-                chapter.classList.remove('animate__animated', 'animate__slideInRight');
-            });
-            const chapterElement = document.getElementById(chapterId);
-            chapterElement.classList.add('visible', 'animate__animated', 'animate__slideInRight');
+            document.querySelectorAll('.chapter').forEach(chapter => chapter.classList.remove('visible'));
+            document.getElementById(chapterId).classList.add('visible');
         }
 
         function checkAnswer(inputId, nextChapterId, correctAnswer) {
