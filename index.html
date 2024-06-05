@@ -7,16 +7,14 @@
     <title>Quinn's Quick Quiz</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #ff9966;
-            /* darker tangerine */
+            font-family: 'Arial', sans-serif;
+            background-color: #ff9966; /* darker tangerine */
             color: #333;
-            padding: 20px;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
         }
 
         .container {
@@ -26,11 +24,13 @@
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
         }
 
         .chapter {
             display: none;
+            animation: slideIn 0.5s ease-in-out;
         }
 
         .visible {
@@ -38,77 +38,82 @@
         }
 
         button {
-            padding: 10px 15px;
-            background-color: #008080;
-            /* teal */
+            padding: 12px 20px;
+            background-color: #008080; /* teal */
             border: none;
             color: #fff;
             cursor: pointer;
             border-radius: 5px;
             margin-top: 20px;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #006666;
-            /* darker teal */
+            background-color: #006666; /* darker teal */
         }
 
-        h1,
-        h2 {
-            color: #cc0099;
-            /* darker magenta */
+        h1, h2 {
+            color: #cc0099; /* darker magenta */
         }
 
         input[type="text"] {
             padding: 10px;
-            border: 2px solid #cc0099;
-            /* darker magenta */
+            border: 2px solid #cc0099; /* darker magenta */
             margin-bottom: 10px;
             border-radius: 5px;
-            width: calc(100% - 22px);
+            width: calc(100% - 24px);
         }
 
-        .feedback,
-        .error {
+        .feedback, .error {
             margin-top: 10px;
+            display: none;
         }
 
         .feedback {
             color: green;
-            display: none;
         }
 
         .error {
             color: red;
-            display: none;
         }
 
         .present {
-            background-color: #008080;
-            /* teal */
+            background-color: #008080; /* teal */
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             margin-top: 20px;
             color: #fff;
+            animation: popIn 0.5s ease-in-out;
         }
 
         .present h2 {
-            color: #ffcc00;
-            /* gold */
+            color: #ffcc00; /* gold */
         }
 
-        .present p {
+        .present p, .present strong {
             font-size: 1.2em;
             color: #fff;
         }
 
         .present strong {
-            display: block;
             margin-top: 20px;
-            font-size: 1.4em;
-            color: #ffcc00;
-            /* gold */
+            color: #ffcc00; /* gold */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
@@ -118,9 +123,7 @@
     <div class="container">
         <h1>Quinn's Quick Quiz</h1>
         <div id="introduction" class="chapter visible">
-            <p>Welcome, Quinn! Today is a special day because it's your 21st birthday! Your friend Sam has set up an
-                adventure filled with trivia and puzzles to celebrate. Are you ready to begin this exciting journey and
-                claim your birthday present?</p>
+            <p>Welcome, Quinn! Today is a special day because it's your 21st birthday! Your friend Sam has set up an adventure filled with trivia and puzzles to celebrate. Are you ready to begin this exciting journey and claim your birthday present?</p>
             <button onclick="showChapter('chapter1')">Begin</button>
         </div>
 
@@ -209,10 +212,12 @@
             if (answer === correctAnswer.toLowerCase()) {
                 document.getElementById(successId).style.display = 'block';
                 document.getElementById(errorId).style.display = 'none';
-                setTimeout(() => showChapter(nextChapterId), 1500);
+                setTimeout(() => {
+                    document.getElementById(successId).style.display = 'none';
+                    showChapter(nextChapterId);
+                }, 1000);
             } else {
                 document.getElementById(errorId).style.display = 'block';
-                document.getElementById(successId).style.display = 'none';
             }
         }
     </script>
