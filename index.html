@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinn's Birthday Adventure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ff9966; /* darker tangerine */
+            color: #333;
+            padding: 20px;
+        }
+        .chapter {
+            display: none;
+        }
+        .visible {
+            display: block;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #008080; /* teal */
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #006666; /* darker teal */
+        }
+        h1, h2 {
+            color: #cc0099; /* darker magenta */
+        }
+        input[type="text"] {
+            padding: 5px;
+            border: 2px solid #cc0099; /* darker magenta */
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Quinn's Birthday Adventure</h1>
+<div id="introduction" class="chapter visible">
+    <p>Welcome, Quinn! Today is a special day because it's your 21st birthday! Your friend Sam has set up an adventure filled with trivia and puzzles to celebrate. Are you ready to begin this exciting journey and claim your birthday prize?</p>
+    <button onclick="showChapter('chapter1')">Begin</button>
+</div>
+
+<div id="chapter1" class="chapter">
+    <h2>Chapter 1: The Memory Lane</h2>
+    <p>You find yourself walking down memory lane, surrounded by fond memories of your university days. To proceed, you must answer a question about your favourite university unit.</p>
+    <p><strong>What unit would Sam believe to be your favourite at university?</strong></p>
+    <input type="text" id="chapter1-input" />
+    <button onclick="checkAnswer('chapter1-input', 'chapter2', 'psychology')">Submit</button>
+    <p id="chapter1-error" style="color: red; display: none;">Incorrect answer. Try again!</p>
+</div>
+
+<div id="chapter2" class="chapter">
+    <h2>Chapter 2: The First Encounter</h2>
+    <p>You reminisce about the first time you met Sam. It was in a specific unit during your university days.</p>
+    <p><strong>What unit were you studying when you first met Sam?</strong></p>
+    <input type="text" id="chapter2-input" />
+    <button onclick="checkAnswer('chapter2-input', 'chapter3', 'statistics')">Submit</button>
+    <p id="chapter2-error" style="color: red; display: none;">Incorrect answer. Try again!</p>
+</div>
+
+<div id="chapter3" class="chapter">
+    <h2>Chapter 3: The Philosopher's Choice</h2>
+    <p>Imagine you could teach one thing to a blank slate civilization. Sam has often pondered this question with you.</p>
+    <p><strong>If you could teach one thing to a blank slate civilization, what would it be?</strong></p>
+    <input type="text" id="chapter3-input" />
+    <button onclick="checkAnswer('chapter3-input', 'chapter4', 'critical thinking')">Submit</button>
+    <p id="chapter3-error" style="color: red; display: none;">Incorrect answer. Try again!</p>
+</div>
+
+<div id="chapter4" class="chapter">
+    <h2>Chapter 4: The Common Trait</h2>
+    <p>You and Sam share many things in common, but one personality trait stands out the most.</p>
+    <p><strong>What personality trait do you and Sam most have in common?</strong></p>
+    <input type="text" id="chapter4-input" />
+    <button onclick="checkAnswer('chapter4-input', 'chapter5', 'curiosity')">Submit</button>
+    <p id="chapter4-error" style="color: red; display: none;">Incorrect answer. Try again!</p>
+</div>
+
+<div id="chapter5" class="chapter">
+    <h2>Chapter 5: The Birthday Riddle</h2>
+    <p>To unlock the final prize, you must answer one last question about yourself.</p>
+    <p><strong>What date were you born?</strong></p>
+    <input type="text" id="chapter5-input" />
+    <button onclick="checkAnswer('chapter5-input', 'birthday')">Submit</button>
+    <p id="chapter5-error" style="color: red; display: none;">Incorrect answer. Try again!</p>
+</div>
+
+<div id="birthday" class="chapter">
+    <h2>Wait... that's today!</h2>
+    <p>Happy Birthday Quinn! Thanks for being a great friend. Please download your well-deserved gift:</p>
+    <ul>
+        <li>1x free digital creation</li>
+        <li>1x free day out with your friend Sam</li>
+    </ul>
+    <p><strong>Take a screenshot of this page to claim your prizes!</strong></p>
+</div>
+
+<script>
+    function showChapter(chapterId) {
+        document.querySelectorAll('.chapter').forEach(chapter => chapter.classList.remove('visible'));
+        document.getElementById(chapterId).classList.add('visible');
+    }
+
+    function checkAnswer(inputId, nextChapterId, correctAnswer) {
+        const answer = document.getElementById(inputId).value.toLowerCase();
+        if (answer === correctAnswer.toLowerCase()) {
+            showChapter(nextChapterId);
+        } else {
+            document.getElementById(`${inputId}-error`).style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>
+
