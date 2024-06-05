@@ -35,6 +35,14 @@
             border: 2px solid #cc0099; /* darker magenta */
             margin-right: 10px;
         }
+        .feedback {
+            color: green;
+            display: none;
+        }
+        .error {
+            color: red;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -51,7 +59,8 @@
     <p><strong>What unit would Sam believe to be your favourite at university?</strong></p>
     <input type="text" id="chapter1-input" />
     <button onclick="checkAnswer('chapter1-input', 'chapter2', 'psychology')">Submit</button>
-    <p id="chapter1-error" style="color: red; display: none;">Incorrect answer. Try again!</p>
+    <p id="chapter1-success" class="feedback">Correct! Moving to the next chapter...</p>
+    <p id="chapter1-error" class="error">Incorrect answer. Try again!</p>
 </div>
 
 <div id="chapter2" class="chapter">
@@ -60,7 +69,8 @@
     <p><strong>What unit were you studying when you first met Sam?</strong></p>
     <input type="text" id="chapter2-input" />
     <button onclick="checkAnswer('chapter2-input', 'chapter3', 'statistics')">Submit</button>
-    <p id="chapter2-error" style="color: red; display: none;">Incorrect answer. Try again!</p>
+    <p id="chapter2-success" class="feedback">Correct! Moving to the next chapter...</p>
+    <p id="chapter2-error" class="error">Incorrect answer. Try again!</p>
 </div>
 
 <div id="chapter3" class="chapter">
@@ -69,7 +79,8 @@
     <p><strong>If you could teach one thing to a blank slate civilization, what would it be?</strong></p>
     <input type="text" id="chapter3-input" />
     <button onclick="checkAnswer('chapter3-input', 'chapter4', 'critical thinking')">Submit</button>
-    <p id="chapter3-error" style="color: red; display: none;">Incorrect answer. Try again!</p>
+    <p id="chapter3-success" class="feedback">Correct! Moving to the next chapter...</p>
+    <p id="chapter3-error" class="error">Incorrect answer. Try again!</p>
 </div>
 
 <div id="chapter4" class="chapter">
@@ -78,7 +89,8 @@
     <p><strong>What personality trait do you and Sam most have in common?</strong></p>
     <input type="text" id="chapter4-input" />
     <button onclick="checkAnswer('chapter4-input', 'chapter5', 'curiosity')">Submit</button>
-    <p id="chapter4-error" style="color: red; display: none;">Incorrect answer. Try again!</p>
+    <p id="chapter4-success" class="feedback">Correct! Moving to the next chapter...</p>
+    <p id="chapter4-error" class="error">Incorrect answer. Try again!</p>
 </div>
 
 <div id="chapter5" class="chapter">
@@ -87,7 +99,8 @@
     <p><strong>What date were you born?</strong></p>
     <input type="text" id="chapter5-input" />
     <button onclick="checkAnswer('chapter5-input', 'birthday')">Submit</button>
-    <p id="chapter5-error" style="color: red; display: none;">Incorrect answer. Try again!</p>
+    <p id="chapter5-success" class="feedback">Correct! Moving to the next chapter...</p>
+    <p id="chapter5-error" class="error">Incorrect answer. Try again!</p>
 </div>
 
 <div id="birthday" class="chapter">
@@ -108,14 +121,19 @@
 
     function checkAnswer(inputId, nextChapterId, correctAnswer) {
         const answer = document.getElementById(inputId).value.toLowerCase();
+        const successId = inputId.replace('input', 'success');
+        const errorId = inputId.replace('input', 'error');
+        
         if (answer === correctAnswer.toLowerCase()) {
-            showChapter(nextChapterId);
+            document.getElementById(successId).style.display = 'block';
+            document.getElementById(errorId).style.display = 'none';
+            setTimeout(() => showChapter(nextChapterId), 1500);
         } else {
-            document.getElementById(`${inputId}-error`).style.display = 'block';
+            document.getElementById(errorId).style.display = 'block';
+            document.getElementById(successId).style.display = 'none';
         }
     }
 </script>
 
 </body>
 </html>
-
