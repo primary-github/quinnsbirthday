@@ -125,7 +125,7 @@
             <button onclick="showChapter('chapter1')">Begin</button>
         </div>
 
-        <div id="chapter1" class="chapter animate__animated animate__slideInRight">
+        <div id="chapter1" class="chapter">
             <h2>Chapter 1: The First Encounter</h2>
             <p>You reminisce about the first time you met Sam. It was in a specific unit during your university days.</p>
             <p><strong>What was the unit code for the unit you first met Sam?</strong></p>
@@ -135,7 +135,7 @@
             <p id="chapter1-error" class="error">Incorrect answer. Try again!</p>
         </div>
 
-        <div id="chapter2" class="chapter animate__animated animate__slideInRight">
+        <div id="chapter2" class="chapter">
             <h2>Chapter 2: The New Activity</h2>
             <p>After recalling your university days, you think about your current hobbies. You've recently taken up a new physical activity that has quickly become a passion.</p>
             <p><strong>What is this activity?</strong></p>
@@ -145,7 +145,7 @@
             <p id="chapter2-error" class="error">Incorrect answer. Try again!</p>
         </div>
 
-        <div id="chapter3" class="chapter animate__animated animate__slideInRight">
+        <div id="chapter3" class="chapter">
             <h2>Chapter 3: The Philosopher's Reference</h2>
             <p>You ponder over your intellectual pursuits and think of a concept from your favourite philosopher, Hannah Arendt.</p>
             <p><strong>How might Hannah Arendt refer to a life of contemplation?</strong></p>
@@ -155,7 +155,7 @@
             <p id="chapter3-error" class="error">Incorrect answer. Try again!</p>
         </div>
 
-        <div id="chapter4" class="chapter animate__animated animate__slideInRight">
+        <div id="chapter4" class="chapter">
             <h2>Chapter 4: The 3² Model</h2>
             <p>Your mind drifts to your academic achievements. You developed the 3<sup>2</sup> Model, a unique perspective-shifting tool.</p>
             <p><strong>From which row/column intersection do we perceive the world?</strong></p>
@@ -165,7 +165,7 @@
             <p id="chapter4-error" class="error">Incorrect answer. Try again!</p>
         </div>
 
-        <div id="chapter5" class="chapter animate__animated animate__slideInRight">
+        <div id="chapter5" class="chapter">
             <h2>Chapter 5: The Future Foundation</h2>
             <p>Looking ahead, you dream about starting a foundation or organisation that will make a significant impact on the world.</p>
             <p><strong>What name is a likely contender?</strong></p>
@@ -175,7 +175,7 @@
             <p id="chapter5-error" class="error">Incorrect answer. Try again!</p>
         </div>
 
-        <div id="chapter6" class="chapter animate__animated animate__slideInRight">
+        <div id="chapter6" class="chapter">
             <h2>Chapter 6: Today's Date</h2>
             <p>Finally, to unlock the ultimate present, you need to answer one last question about today.</p>
             <p><strong>What is the date today? (Format DD/MM/YYYY)</strong></p>
@@ -185,11 +185,11 @@
             <p id="chapter6-error" class="error">Incorrect answer. Try again!</p>
         </div>
 
-        <div id="birthday" class="chapter present animate__animated animate__zoomIn">
+        <div id="birthday" class="chapter present">
             <h2>Wait... that's today!</h2>
             <p><strong>Happy Birthday Quinn!</strong></p>
             <p>You've successfully completed the adventure and it's time to claim your present.</p>
-            <p><strong>Your presents</strong></p>
+            <p><strong>Your presents:</strong></p>
             <p>1. A Digital Creation of Your Choosing</p>
             <p>2. A Day of Conversation at The Park</p>
             <strong>Take a screenshot of this page and send it to Sam when you are ready to claim your presents! Enjoy your day!</strong>
@@ -198,7 +198,10 @@
 
     <script>
         function showChapter(chapterId) {
-            document.querySelectorAll('.chapter').forEach(chapter => chapter.classList.remove('visible'));
+            document.querySelectorAll('.chapter').forEach(chapter => {
+                chapter.classList.remove('visible');
+                chapter.classList.remove('animate__animated', 'animate__slideInRight');
+            });
             const chapterElement = document.getElementById(chapterId);
             chapterElement.classList.add('visible', 'animate__animated', 'animate__slideInRight');
         }
