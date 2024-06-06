@@ -8,7 +8,8 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #ff9966; /* darker tangerine */
+            background-color: #ff9966;
+            /* darker tangerine */
             color: #333;
             margin: 0;
             display: flex;
@@ -39,7 +40,8 @@
 
         button {
             padding: 12px 20px;
-            background-color: #008080; /* teal */
+            background-color: #008080;
+            /* teal */
             border: none;
             color: #fff;
             cursor: pointer;
@@ -49,22 +51,27 @@
         }
 
         button:hover {
-            background-color: #006666; /* darker teal */
+            background-color: #006666;
+            /* darker teal */
         }
 
-        h1, h2 {
-            color: #cc0099; /* darker magenta */
+        h1,
+        h2 {
+            color: #cc0099;
+            /* darker magenta */
         }
 
         input[type="text"] {
             padding: 10px;
-            border: 2px solid #cc0099; /* darker magenta */
+            border: 2px solid #cc0099;
+            /* darker magenta */
             margin-bottom: 10px;
             border-radius: 5px;
             width: calc(100% - 24px);
         }
 
-        .feedback, .error {
+        .feedback,
+        .error {
             margin-top: 10px;
             display: none;
         }
@@ -78,7 +85,8 @@
         }
 
         .present {
-            background-color: #008080; /* teal */
+            background-color: #008080;
+            /* teal */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -88,32 +96,54 @@
         }
 
         .present h2 {
-            color: #ffcc00; /* gold */
+            color: #ffcc00;
+            /* gold */
         }
 
-        .present p, .present strong {
+        .present p,
+        .present strong {
             font-size: 1.2em;
             color: #fff;
         }
 
         .present strong {
             margin-top: 20px;
-            color: #ffcc00; /* gold */
+            color: #ffcc00;
+            /* gold */
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         @keyframes popIn {
-            from { transform: scale(0.5); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -123,14 +153,16 @@
     <div class="container">
         <h1>Quinn's Quick Birthday Quiz</h1>
         <div id="introduction" class="chapter visible">
-            <p>Welcome, Quinn! In keeping with this year's "don't buy me anything" theme, I've created a quiz for you. There are some presents waiting on the other side—if you can answer all the questions correctly!</p>
- <p><strong>Are you ready to begin and claim your birthday present?</strong></p>
+            <p>Welcome, Quinn! In keeping with this year's "don't buy me anything" theme, I've created a quiz for you.
+                There are some presents waiting on the other side—if you can answer all the questions correctly!</p>
+            <p><strong>Are you ready to begin and collect your birthday presents?</strong></p>
             <button onclick="showChapter('chapter1')">Begin</button>
         </div>
 
         <div id="chapter1" class="chapter">
             <h2>Chapter 1: The First Encounter</h2>
-            <p>Walking down memory lane, you reminisce about the first time we met. It was during one of our shared tutorials.</p>
+            <p>Walking down memory lane, you reminisce about the first time we met. It was during one of our shared
+                tutorials.</p>
             <p><strong>What was the unit code for this unit?</strong></p>
             <input type="text" id="chapter1-input" />
             <button onclick="checkAnswer('chapter1-input', 'chapter2', 'PSYC2000')">Submit</button>
@@ -140,7 +172,7 @@
 
         <div id="chapter2" class="chapter">
             <h2>Chapter 2: The New Activity</h2>
-            <p>You've recently taken up a new physical activity, quickly advancing through its difficulty levels</p>
+            <p>You've recently taken up a new physical activity, quickly advancing through its difficulty levels.</p>
             <p><strong>What is this activity?</strong></p>
             <input type="text" id="chapter2-input" />
             <button onclick="checkAnswer('chapter2-input', 'chapter3', 'Bouldering')">Submit</button>
@@ -150,8 +182,8 @@
 
         <div id="chapter3" class="chapter">
             <h2>Chapter 3: The Philosopher's Reference</h2>
-            <p>You ponder over your intellectual pursuits and think of a concept from your favourite philosopher, Hannah Arendt.</p>
-            <p><strong>How might Hannah Arendt refer to a life of contemplation?</strong></p>
+            <p>With activity in mind, we turn to our philosophical discussions.</p>
+            <p><strong>How might we refer to a life of contemplation and reflection?</strong></p>
             <input type="text" id="chapter3-input" />
             <button onclick="checkAnswer('chapter3-input', 'chapter4', 'Vita contemplativa')">Submit</button>
             <p id="chapter3-success" class="feedback">Correct! Moving to the next chapter...</p>
@@ -159,9 +191,10 @@
         </div>
 
         <div id="chapter4" class="chapter">
-            <h2>Chapter 4: The 3² Model</h2>
-            <p>Your mind drifts to your academic achievements. You developed the 3<sup>2</sup> Model, a unique perspective-shifting tool.</p>
-            <p><strong>From which row/column intersection do we perceive the world?</strong></p>
+            <h2>Chapter 4: 3²</h2>
+            <p>Let us turn to your own creation. You invented a perspective shifting 3x3 grid that seeks to describe
+                reality.</p>
+            <p><strong>From which row column intersection do we perceive the world?</strong></p>
             <input type="text" id="chapter4-input" />
             <button onclick="checkAnswer('chapter4-input', 'chapter5', 'Personal Presence')">Submit</button>
             <p id="chapter4-success" class="feedback">Correct! Moving to the next chapter...</p>
@@ -170,8 +203,9 @@
 
         <div id="chapter5" class="chapter">
             <h2>Chapter 5: The Future Foundation</h2>
-            <p>Looking ahead, you dream about starting a foundation or organisation that will make a significant impact on the world.</p>
-            <p><strong>What name is a likely contender?</strong></p>
+            <p>Looking ahead, you start a foundation or organisation that will make a significant impact
+                on the world.</p>
+            <p><strong>What might you call it?</strong></p>
             <input type="text" id="chapter5-input" />
             <button onclick="checkAnswer('chapter5-input', 'chapter6', 'Aggapay')">Submit</button>
             <p id="chapter5-success" class="feedback">Correct! Moving to the next chapter...</p>
@@ -179,8 +213,9 @@
         </div>
 
         <div id="chapter6" class="chapter">
-            <h2>Chapter 6: Today's Date</h2>
-            <p>Finally, to unlock the ultimate present, you need to answer one last question about today.</p>
+            <h2>Chapter 6:6/6</h2>
+            <p>We have reached the final chapter of your journey. Answer this final question to transcend beyond... the
+                devil?.</p>
             <p><strong>What is the date today? (Format DD/MM/YYYY)</strong></p>
             <input type="text" id="chapter6-input" />
             <button onclick="checkAnswer('chapter6-input', 'birthday', '06/06/2024')">Submit</button>
@@ -189,13 +224,13 @@
         </div>
 
         <div id="birthday" class="chapter present">
-            <h2>Wait... that's today!</h2>
+            <h2>That's today and you're 21!</h2>
             <p><strong>Happy Birthday Quinn!</strong></p>
-            <p>You've successfully completed the adventure and it's time to claim your present.</p>
+            <p>You've successfully completed the birthday quiz and it's time to collect your presents.</p>
             <p><strong>Your presents:</strong></p>
             <p>1. A Digital Creation of Your Choosing</p>
             <p>2. A Day of Conversation at The Park</p>
-            <strong>Take a screenshot of this page and send it to Sam when you are ready to claim your presents! Enjoy your day!</strong>
+            <strong>Take a screenshot of this page and send it to Sam when you are ready to claim them!</strong>
         </div>
     </div>
 
